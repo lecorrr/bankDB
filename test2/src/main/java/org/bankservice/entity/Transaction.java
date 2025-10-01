@@ -24,6 +24,10 @@ public class Transaction {
     @Column(nullable = false)
     private String type;  // e.g. "DEPOSIT", "WITHDRAW"
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Currency currency;
+    
     public Long getId() {
         return id;
     }
@@ -43,6 +47,13 @@ public class Transaction {
     }
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public Currency getCurrency() {
+    return currency;
+    }
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 
     public LocalDateTime getTimestamp() {
