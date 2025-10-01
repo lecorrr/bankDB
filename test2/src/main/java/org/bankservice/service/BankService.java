@@ -26,7 +26,7 @@ public class BankService {
         accountDao.persist(a);
     }
 
-    public void deposit(String accNo, double amount) {
+    public void deposit(String accNo, double amount, Currency currency) {
         if (amount <= 0) {
             throw new IllegalArgumentException("Amount must be positive");
         }
@@ -46,6 +46,7 @@ public class BankService {
             t.setAmount(amount);
             t.setTimestamp(LocalDateTime.now());
             t.setType("DEPOSIT");
+            t.setCurrency(currency);
             em.persist(t);
 
             tx.commit();
