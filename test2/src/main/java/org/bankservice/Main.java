@@ -35,9 +35,12 @@ public class Main {
                     case "2":
                         System.out.print("Account number: ");
                         accNo = sc.nextLine().trim();
+                        System.out.print("Currency (USD, EUR, UAH): ");
+                        String currencyInput = sc.nextLine().trim().toUpperCase();
+                        Currency currency = Currency.valueOf(currencyInput);
                         System.out.print("Amount: ");
                         double dep = Double.parseDouble(sc.nextLine().trim());
-                        service.deposit(accNo, dep);
+                        service.deposit(accNo, dep, currency);
                         System.out.println("Deposit successful.");
                         break;
                     case "3":
